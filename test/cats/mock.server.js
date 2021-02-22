@@ -1,13 +1,12 @@
-const { readFileSync } = require('fs');
-const http = require('http');
+const { readFileSync } = require("fs");
+const http = require("http");
 
 class CatServerMock {
-
   start(host, port) {
     const catsController = (req, res, next) => {
-      if(req.url == '/cat'){
+      if (req.url == "/cat") {
         const catImage = readFileSync(`${__dirname}/cat.jpeg`);
-        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        res.writeHead(200, { "Content-Type": "image/jpeg" });
         res.end(catImage);
       }
     };
@@ -27,8 +26,6 @@ class CatServerMock {
       });
     });
   }
-
 }
-
 
 exports.CatServerMock = CatServerMock;
